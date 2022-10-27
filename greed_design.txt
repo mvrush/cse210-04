@@ -1,0 +1,117 @@
+Greed Game
+
+Main:
+	Will start the game, Hold default variables and have the main() method.
+
+Director Folder Classes
+	Director class:
+		(attributes):
+		Keyboard Service
+		Video Service
+
+			Director Methods:
+				start_game()
+				get_inputs()
+				do_updates()
+				do_outputs()
+
+Casting Folder Classes
+	Actor Class:
+		(attributes)
+		Text
+		Font Size
+		Color
+		Position
+		Velocity
+
+		Actor Class Methods:
+			get_color()
+			get_font_size()
+			get_position()
+			get_text()
+			get_velocity()
+			move_next()
+			set_color()
+			set_font_size()
+			set_position()
+			set_text()
+			set_velocity()
+			
+
+	Artifact Class(Actor):
+		(attributes)
+		super().__init__() # This will give us access to all of the Actor class attributes
+		Point Value
+
+			Artifact Class Methods:
+				get_point_value()
+				set_point_value()
+
+	Cast Class:
+		(attributes)
+		Actors
+
+			Cast Class Methods:
+				add_actor()
+				get_actors()
+				get_all_actors()
+				get_first_actor()
+				remove_actor()
+
+Services Folder Classes
+	KeyboardService Class:
+		(attributes)
+		Cell Size
+
+			KeyboardService Class Methods:
+				get_direction()
+
+	VideoService Class:
+		(attributes)
+		caption
+		width
+		height
+		cell size
+		frame rate
+		debug
+
+			VideoService Class Methods:
+				close_window()
+				clear_buffer()
+				draw_actor()
+				draw_actors()
+				flush_buffer()
+				get_cell_size()
+				get_height()
+				get_width()
+				is_window_open()
+				open_window()
+				draw_grid()
+
+Shared Folder Classes
+	Color Class:
+		(attributes)
+		red
+		green
+		blue
+		alpha
+
+			Color Class Methods:
+				to_tuple()
+
+	Point Class:
+		(attributes)
+		X
+		Y
+
+			Point Class Methods:
+				add()
+				equals()
+				get_x()
+				get_y()
+				scale()
+					
+				
+
+
+		
