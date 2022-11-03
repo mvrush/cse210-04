@@ -1,0 +1,2 @@
+# Put this in the root directory and it will ignore the following files in all the sub-directories
+__pycache__
