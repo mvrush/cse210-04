@@ -21,11 +21,11 @@ class Director:
         self._video_service = video_service
         self._scoring = Scoring() # This intantiates an instance of the 'Scoring()' class so we can access it's methods and variables
         
-    def start_game(self, cast):
+    def start_game(self, cast): # This recieves the 'cast' instantiation from '__main__.py'. It's an instance of our 'Cast()' class that's been populated.
         """Starts the game using the given cast. Runs the main game loop.
 
         Args:
-            cast (Cast): The cast of actors.
+            cast (Cast): The cast of actors passed from __main__.py.
         """
         self._video_service.open_window()
         while self._video_service.is_window_open():
@@ -52,7 +52,7 @@ class Director:
         """
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("artifacts")
+        artifacts = cast.get_actors("artifacts") # Uses our instance of 'cast' passed from '__main__.py' and runs the 'get_actors()' function passing the 'artifact' key to get the artifacts.
 
         banner.set_text(f"Score: {self._scoring.get_score()}") # This is where we will set our "Score: " banner. I accessed the 'get_score()' method directly.
         max_x = self._video_service.get_width()
@@ -61,13 +61,8 @@ class Director:
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()): # When the robot and artifact are in the same position, it will run the 'set_score()' function on the next line
-                self._scoring.set_score() # After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
-                """
-                if artifact == '*':
-                    score += 1
-                elif artifact == '0':
-                    score -= 1
-                """
+                self._scoring.set_score(cast) # Passes the 'cast' instance to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
+
 
                 #banner.set_text(f"Score: {self._scoring.get_score()}") # Don't need this line anymore because it updates the 'banner.set_text()' line earlier in the loop.   
         
