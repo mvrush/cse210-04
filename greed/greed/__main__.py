@@ -21,7 +21,7 @@ CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60
 ROWS = 40
-CAPTION = "Robot Finds Kitten"
+CAPTION = "Greed"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
@@ -55,12 +55,12 @@ def main():
     # create the artifacts
     with open(DATA_PATH) as file:
         data = file.read()
-        messages = data.splitlines()
+        messages = data.splitlines() # We won't be using messages anymore
 
     for n in range(DEFAULT_ARTIFACTS):
         #text = chr(random.choice([42, 48])) # This line uses the random.choice() function to choose between the unicode characters 42=* and 48=0 and populate the artifacts.
-        text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the unicode characters 42=* and 48=0 and populate the artifacts.
-        message = messages[n]
+        text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the string '*' or '0' {zero}.
+        message = messages[n] # We won't be using messages anymore
 
         x = random.randint(1, COLS - 1)
         y = random.randint(1, ROWS - 1)
@@ -77,7 +77,7 @@ def main():
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_message(message)
+        artifact.set_message(message) # We don't need a message anymore.
         cast.add_actor("artifacts", artifact)
     
     # start the game
