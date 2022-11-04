@@ -58,7 +58,8 @@ def main():
         messages = data.splitlines()
 
     for n in range(DEFAULT_ARTIFACTS):
-        text = chr(random.randint(33, 126))
+        #text = chr(random.choice([42, 48])) # This line uses the random.choice() function to choose between the unicode characters 42=* and 48=0 and populate the artifacts.
+        text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the unicode characters 42=* and 48=0 and populate the artifacts.
         message = messages[n]
 
         x = random.randint(1, COLS - 1)
