@@ -60,7 +60,7 @@ class Director:
         robot.move_next(max_x, max_y)
         
         for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()): # When the robot and artifact are in the same position, it will run the 'set_score()' function on the next line
+            if robot.get_position().equals(artifact.get_position()): # When the robot and artifact are in the same position, it will run the 'set_score()' function on the next line. We are calling 'get_position()' from our Actor() class.
                 self._scoring.set_score(cast) # Passes the 'cast' instance to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
 
 
