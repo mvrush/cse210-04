@@ -17,7 +17,7 @@ class VideoService:
         self._height = height
         self._cell_size = cell_size
         self._frame_rate = frame_rate
-        self._debug = debug
+        self._debug = debug # Change from 'debug' to 'True' to draw the grid for debugging.
 
     def close_window(self):
         """Closes the window and releases all computing resources."""

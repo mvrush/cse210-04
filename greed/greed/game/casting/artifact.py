@@ -12,7 +12,7 @@ class Artifact(Actor): # Creates the Artifact() class and gets inheritance from 
     """
     def __init__(self):
         super().__init__() # Using 'super()' and dot . notation invokes the Parent constructor from the Actor() class. Basically calls the Actor() class '__init__(self)' constructor and gives you access to all it's attributes.
-        self._message = "Score: " # This adds another Attribute found only in our Artifact() class called 'self._message'. It shows with the banner which is our cumulative score
+        self._message = "" # This adds another Attribute found only in our Artifact() class called 'self._message'. It shows with the banner which is our cumulative score
         
     def get_message(self): # This function passes the value of 'self._message' out. Basically gives it public access. It's a getter function.
         """Gets the artifact's message.

@@ -1,3 +1,5 @@
+from game.casting.scoring import Scoring
+
 class Director:
     """A person who directs the game. 
     
@@ -9,7 +11,7 @@ class Director:
     """
 
     def __init__(self, keyboard_service, video_service):
-        """Constructs a new Director using the specified keyboard and video services.
+        """Constructs a new Director using the specified keyboard service, video service and scoring.
         
         Args:
             keyboard_service (KeyboardService): An instance of KeyboardService.
@@ -17,6 +19,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._scoring = Scoring() # This intantiates an instance of the 'Scoring()' class so we can access it's methods and variables
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -51,15 +54,25 @@ class Director:
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
 
-        banner.set_text("") # This is where we will set our "Score: " banner
+        #score = 0
+        # score = self._scoring.get_score()
+        banner.set_text(f"Score: {self._scoring.get_score()}") # This is where we will set our "Score: " banner. I accessed the 'get_score()' method directly.
+        # banner.set_text(f"Score: 0")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
         
         for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()): #need to change this section to update score instead of display banner message
-                message = artifact.get_message()
-                banner.set_text(message)    
+            if robot.get_position().equals(artifact.get_position()): # When the robot and artifact are in the same position, it will run the 'set_score()' function on the next line
+                self._scoring.set_score() # After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
+                """
+                if artifact == '*':
+                    score += 1
+                elif artifact == '0':
+                    score -= 1
+                """
+
+                #banner.set_text(f"Score: {self._scoring.get_score()}") # Don't need this line anymore because it updates the 'banner.set_text()' line earlier in the loop.   
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
