@@ -52,7 +52,7 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
-    # create the artifacts
+    # create the artifacts for game
     with open(DATA_PATH) as file:
         data = file.read()
         messages = data.splitlines() # We won't be using messages anymore
