@@ -1,4 +1,9 @@
+import random # import the random library to use below
+
 from game.casting.scoring import Scoring
+from game.shared.point import Point # Had to import this so I could use Point() class to set velocity for the artifacts.
+from game.shared.color import Color # Had to import to regenerate artifacts
+from game.casting.artifact import Artifact # Had to import this so I could manipulate the Artifacts when removing and adding them after they are caught.
 
 class Director:
     """A person who directs the game. 
