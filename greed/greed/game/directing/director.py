@@ -5,6 +5,12 @@ from game.shared.point import Point # Had to import this so I could use Point() 
 from game.shared.color import Color # Had to import to regenerate artifacts
 from game.casting.artifact import Artifact # Had to import this so I could manipulate the Artifacts when removing and adding them after they are caught.
 
+### To regenerate artifacts I need these variable values
+CELL_SIZE = 15
+FONT_SIZE = 15
+COLS = 60 # This splits the width (x) into 60 columns
+ROWS = 40 # This splits the height (y) into 40 rows
+
 class Director:
     """A person who directs the game. 
     
