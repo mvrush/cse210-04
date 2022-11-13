@@ -42,7 +42,7 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(MAX_Y / -40)
+    y = int(MAX_Y / -40) # This is how we set the robot to the bottom of the screen. We set it at -40 rows.
     position = Point(x, y)
 
     robot = Actor()
