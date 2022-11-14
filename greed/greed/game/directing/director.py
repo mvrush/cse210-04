@@ -79,13 +79,42 @@ class Director:
         for artifact in artifacts:
             artifact.move_next(max_x, max_y)
         
+        ### Remove hit artifacts create new Artifacts also control the scoring        
         for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()): # When the robot and artifact are in the same position, it will run the 'set_score()' function on the next line. We are calling 'get_position()' from our Actor() class.
-                #self._scoring.set_score(cast) # (old way I was doing it) Passes the 'cast' instance to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
+            if robot.get_position().equals(artifact.get_position()): # Here, when the robot and artifact are in the same position, it runs the following lines.
                 self._scoring.set_score(artifact.get_text()) # Passes the value of 'text' from the matched artifact to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
+                cast.remove_actor("artifacts", artifact) # This removes the artiface when the robot and artifact intersect.
+                
+                ### Add new artifact when the robot position and artifact position are the same (replaces the removed ones)
+                # I just took lines 103-125 right out of the CREATE ARTIFACT section of the __main__.py file
+                text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the string '*' or '0' {zero}.
+                #message = messages[n] # We won't be using messages anymore
 
+                x = random.randint(1, COLS - 1) # This sets a random value for our x (horizontal) position in the columns
+                y = random.randint(1, ROWS - 1) # This sets a random value for our y (vertical) position in the rows
+                position = Point(x, y) # this will be the position for one artifact as it loopws.
+                position = position.scale(CELL_SIZE) # sets the position size to equal what we defined for our CELL_SIZE
 
-                #banner.set_text(f"Score: {self._scoring.get_score()}") # Don't need this line anymore because it updates the 'banner.set_text()' line earlier in the loop.   
+                # The next 4 lines create a random color for each artifact
+                r = random.randint(0, 255)
+                g = random.randint(0, 255)
+                b = random.randint(0, 255)
+                color = Color(r, g, b)
+                
+                # Calls our Artifact() class and sets each of the values below using the methods in the Artifact() class
+                artifact = Artifact()
+                artifact.set_text(text)
+                artifact.set_font_size(FONT_SIZE)
+                artifact.set_color(color)
+                artifact.set_position(position)
+                #artifact.set_message(message) # We don't need a message anymore.
+                cast.add_actor("artifacts", artifact)
+                
+                ### ADD new artifact when one get removed
+                #new_artifact = Artifact(self._columns, self._rows, self._cell_size, self._font_size)
+                #new_artifact.set_position(Point(new_artifact.get_position().get_x(), max_y))
+                #cast.add_actor("artifacts", new_artifact)
+        ###
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
