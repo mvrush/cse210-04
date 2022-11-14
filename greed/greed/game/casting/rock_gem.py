@@ -1,7 +1,7 @@
 from game.casting.actor import Actor
 
 
-class Artifact(Actor): # Creates the Artifact() class and gets inheritance from the Actor class. That gives it access to all the Actor() class attributes and methods that aren't private.
+class RockGem(Actor): # Creates the Artifact() class and gets inheritance from the Actor class. That gives it access to all the Actor() class attributes and methods that aren't private.
     """
     An item of cultural or historical interest. 
     
