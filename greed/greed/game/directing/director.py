@@ -65,6 +65,11 @@ class Director:
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts") # Uses our instance of 'cast' passed from '__main__.py' and runs the 'get_actors()' function passing the 'artifact' key to get the artifacts.
 
+        # the next three lines sets the velocity for each artifact
+        velocity = Point(0, 5) # I was able to use the Point() class here because I imported it up above. 
+        for artifact in artifacts:
+            artifact.set_velocity(velocity)
+        
         banner.set_text(f"Score: {self._scoring.get_score()}") # This is where we will set our "Score: " banner. I accessed the 'get_score()' method directly.
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
