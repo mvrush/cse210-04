@@ -3,7 +3,7 @@ import random # import the random library to use below
 from game.casting.scoring import Scoring
 from game.shared.point import Point # Had to import this so I could use Point() class to set velocity for the artifacts.
 from game.shared.color import Color # Had to import to regenerate artifacts
-from game.casting.rock_gem import Artifact # Had to import this so I could manipulate the Artifacts when removing and adding them after they are caught.
+from game.casting.rock_gem import RockGem # Had to import this so I could manipulate the Rocks and Gems when removing and adding them after they are caught.
 
 ### To regenerate artifacts I need these variable values
 CELL_SIZE = 15
@@ -101,8 +101,8 @@ class Director:
                 b = random.randint(0, 255)
                 color = Color(r, g, b)
                 
-                # Calls our Artifact() class and sets each of the values below using the methods in the Artifact() class
-                artifact = Artifact()
+                # Calls our RockGem() class and sets each of the values below using the methods in the Artifact() class
+                artifact = RockGem()
                 artifact.set_text(text)
                 artifact.set_font_size(FONT_SIZE)
                 artifact.set_color(color)
