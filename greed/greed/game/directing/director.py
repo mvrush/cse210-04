@@ -74,6 +74,10 @@ class Director:
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
+
+        # This sets the movement for our artifacts the same way we move the robot
+        for artifact in artifacts:
+            artifact.move_next(max_x, max_y)
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()): # When the robot and artifact are in the same position, it will run the 'set_score()' function on the next line. We are calling 'get_position()' from our Actor() class.
